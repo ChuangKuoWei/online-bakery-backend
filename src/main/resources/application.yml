@@ -8,14 +8,15 @@ spring:
   #資料庫連線設定
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://localhost:1433;database=ebuy;trustServerCertificate=true
-    username: s8
+    url: jdbc:sqlserver://sql1002.site4now.net:1433;databaseName=db_ab2b83_ebuy;encrypt=true;trustServerCertificate=true
+    username: db_ab2b83_ebuy_admin
     password: design123456
 
   #Hibernate/JPA的相關設定
   jpa:
     show-sql: true
     database-platform: org.hibernate.dialect.SQLServerDialect
+    open-in-view: false  # ✅ 避免 LazyInitializationException
     hibernate:
       ddl-auto: update
       naming:
@@ -30,6 +31,11 @@ spring:
   jackson:
     date-format: "yyyy-MM-dd"
     time-zone: Asia/Taipei
+
+
+  # Thymeleaf 設定
+  thymeleaf:
+    check-template-location: false  # ✅ 避免找不到 templates 的警告
 
 # application.yml
 jwt:
